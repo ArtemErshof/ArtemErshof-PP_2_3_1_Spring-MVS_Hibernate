@@ -42,6 +42,6 @@ public class UserDAOImpl implements UserDAO {
     public User getById(long id) {
         TypedQuery<User> query = entityManager.createQuery("select u from User u where u.id =:id", User.class);
         query.setParameter("id", id);
-        return query.getResultList().stream().findAny().orElse(null);
+        return query.getSingleResult();
     }
 }
